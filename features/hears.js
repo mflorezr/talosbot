@@ -24,21 +24,21 @@ module.exports = function(controller) {
     //     await bot.reply(message,{ text: 'I HEARD ALL CAPS!' });
     // });
 
-    controller.hears(['!register'], 'direct_message', async(bot, message) => {
-      await bot.changeContext(message.reference);
-      let user = await User.findOne({ slackId: message.user });
-      if(user){
-        await bot.reply(message,'Hey! You are already registered in our system. Thanks for be here :ablobdance:');
-      } else {
-        let slackUser = bot.api.users.info({ user: message.user }, function(err, response) {
-          return response
-        });
-        slackUser.then(async (info) =>{
-          user = new User({ name: info.user.real_name, slackId: info.user.id, reference: message.reference})
-          await user.save()
-        })
-        await bot.reply(message,`Hey buddy! Welcome to the Talos DailyBot :welcome: . I'll be your friendly reminder during your training. Have a lot of fun! `);
-      }
+  controller.hears(['!register'], 'direct_message', async(bot, message) => {
+    await bot.changeContext(message.reference);
+    let user = await User.findOne({ slackId: message.user });
+    if(user){
+      await bot.reply(message,'Hey! You are already registered in our system. Thanks for be here :ablobdance:');
+    } else {
+      let slackUser = bot.api.users.info({ user: message.user }, function(err, response) {
+        return response
+      });
+      slackUser.then(async (info) =>{
+        user = new User({ name: info.user.real_name, slackId: info.user.id, reference: message.reference})
+        await user.save()
+      })
+      await bot.reply(message,`Hey buddy! Welcome to the Talos DailyBot :welcome: . I'll be your friendly reminder during your training. Have a lot of fun! `);
+    }
   });
 
   controller.hears(['!goodbye'], 'direct_message', async(bot, message) => {
