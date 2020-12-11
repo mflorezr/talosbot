@@ -8,6 +8,7 @@ const userSchema = new Schema({
     trim: true
   },
   slackId: String,
+  reference: Object,
   dailies: [
     { type: Schema.ObjectId, ref: 'Report' }
   ]
