@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "botbuilder-adapter-slack": "^1.0.13",
     "botbuilder-storage-mongodb": "^0.9.5",
     "botkit": "^4.10.0",
@@ -15,5 +16,8 @@
     "dotenv": "^7.0.0",
     "mongoose": "^5.11.0",
     "node-schedule": "^1.3.2"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

@@ -25,21 +25,6 @@ let storage = null;
 //     });
 // }
 
-//Connect to mongodb
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log('MongoDB Connected…')
-})
-.catch(err => console.log(err))
-
-// import all of our models
-require('./models/Report');
-require('./models/User');
-
-
 const adapter = new SlackAdapter({
   // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
   // enable_incomplete: true,
